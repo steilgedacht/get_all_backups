@@ -29,12 +29,13 @@ for server in servers:
         log += f"Server {server}: wrong data\n"
         continue
 
-    ftp.cwd(prefix + '/administrator/components/com_akeeba/backup')
 
     # get all the files in the backup directory
     folder_files = []
     try:     
+        ftp.cwd(prefix + '/administrator/components/com_akeeba/backup')
         ftp.dir(folder_files.append)
+
     except:
         log += f"Server {server}: wrong root\n"
         continue
