@@ -14,6 +14,7 @@ log = "Logging of backups \n"
 
 # iterate over all server entries in the json file and get every backup
 for server in servers:
+    p_bar.update(1)
     hostname = servers[server]["hostname"]
     username = servers[server]["username"]
     password = servers[server]["password"]
@@ -64,7 +65,6 @@ for server in servers:
 
     # rename the downloaded backup
     os.rename(os.path.join("backups", backup),os.path.join("backups", server.replace(" ", "_") + "_" + backup))
-    p_bar.update(1)
 
 p_bar.close()
 
